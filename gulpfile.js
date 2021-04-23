@@ -22,7 +22,8 @@ function css_style (done){
         }))
         .pipe(rename({suffix: '.min'}))
         .pipe(sourcemaps.write('./'))
-        .pipe( gulp.dest('./css/') );
+        .pipe( gulp.dest('./css/') )
+        .pipe(browserSync.stream());
 
     done();
 }
@@ -30,11 +31,16 @@ function css_style (done){
 function sync(done) {
     browserSync.init({
         server: {
-            baseDir:"./"+ index.html+ "/"
+            baseDir:"./"
         },
         port: 3000,
         notify: false
     });
+    done();
+}
+
+function browserReload(done){
+    browserSync.reload();
     done();
 }
 
@@ -47,9 +53,15 @@ function watchSass(){
     gulp.watch("./scss/**/*",css_style);
 }
 
+function watchFiles(){
+    gulp.watch("./scss/**/*",css_style);
+    gulp.watch("./**/*.html",browserReload);
+    gulp.watch("./**/*.js",browserReload);
+    
+}
 
+gulp.task('default',gulp.parallel(  watchFiles, sync));
 gulp.task(sync);
-gulp.task('default',gulp.series(print, watchSass));
 
 
 

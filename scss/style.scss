@@ -11,10 +11,18 @@ body {
 a {
     transition: all 1s ease-in-out;
     color: chartreuse;
-    font-size: 44px;
+    font-size: 20px;
 }
 ul{
     li{
         display: inline-block;
     }
+}
+p{
+    color: rgb(24, 252, 4);
+    font-size: 100px;
+}
+p:hover{
+    color:royalblue;
+
 }
