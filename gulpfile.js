@@ -4,7 +4,7 @@ let rename = require('gulp-rename');
 let sass = require('gulp-sass');
 let autoprefixer = require('gulp-autoprefixer');
 let sourcemaps = require('gulp-sourcemaps');
-
+let browserSync = require("browser-sync").create();
 
 
 
@@ -27,6 +27,17 @@ function css_style (done){
     done();
 }
 
+function sync(done) {
+    browserSync.init({
+        server: {
+            baseDir:"./"+ index.html+ "/"
+        },
+        port: 3000,
+        notify: false
+    });
+    done();
+}
+
 function print(done) {
     console.log("hi");
     done();
@@ -36,10 +47,9 @@ function watchSass(){
     gulp.watch("./scss/**/*",css_style);
 }
 
-// gulp.task(css_style);
-// gulp.task(print);
 
+gulp.task(sync);
 gulp.task('default',gulp.series(print, watchSass));
 
-// exports.default = css_style;
-// exports.default = print;
+
+
