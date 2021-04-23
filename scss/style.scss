@@ -1,0 +1,15 @@
+$color: red;
+
+body {
+    background: $color;
+    
+    div{
+        background: blue;
+        padding: 10px;
+    }
+}
+a {
+    transition: all 1s ease-in-out;
+    color: chartreuse;
+    font-size: 44px;
+}
