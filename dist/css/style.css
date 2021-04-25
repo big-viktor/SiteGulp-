@@ -13,6 +13,10 @@ div {
   font-size: 30px;
 }
 
+p {
+  color: red;
+}
+
 @media (max-width: 767px) {
   span {
     font-size: 15px;
