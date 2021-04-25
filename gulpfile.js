@@ -1,67 +1,83 @@
+let project_folder = "dist";
+let source_folder = "app";
 
-let gulp = require('gulp');
-let rename = require('gulp-rename');
-let sass = require('gulp-sass');
-let autoprefixer = require('gulp-autoprefixer');
-let sourcemaps = require('gulp-sourcemaps');
-let browserSync = require("browser-sync").create();
+let path = {
+    build: {
+        html: project_folder + "/",
+        css: project_folder + "/css",
+        js: project_folder + "/js",
+        img: project_folder + "/img",
+        fonts: project_folder + "/fonts"
+    }, 
+    src: {
+        html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
+        css: source_folder + "/scss/style.scss",
+        js: source_folder + "/js/script.js",
+        img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
+        fonts: source_folder + "/fonts/*.ttf",
+    },
+    watch: {
+        html: source_folder + "/**/*.html",
+        css: source_folder + "/scss/**/*.scss",
+        js: source_folder + "/js/**/*.js",
+        img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
+    },
+    clean: "./" + project_folder + "/"
+};
+
+    let { src, dest } = require('gulp'),
+    gulp = require('gulp'), 
+    browsersync = require("browser-sync").create(),
+    fileinclude = require("gulp-file-include"),
+    del = require("del"),
+    scss = require("gulp-sass");
 
 
 
-function css_style (done){
-
-    gulp.src('./scss/**/*.scss')
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            errorLogToConsole: true,
-            outputStyle: 'compressed'
-        }))
-        .on('error', console.error.bind(console))
-        .pipe(autoprefixer({
-            cascade: true
-        }))
-        .pipe(rename({suffix: '.min'}))
-        .pipe(sourcemaps.write('./'))
-        .pipe( gulp.dest('./css/') )
-        .pipe(browserSync.stream());
-
-    done();
-}
-
-function sync(done) {
-    browserSync.init({
-        server: {
-            baseDir:"./"
+function browserSync (params) {
+    browsersync.init({
+        server:{
+            baseDir:"./"+ project_folder + "/"
         },
-        port: 3000,
+        port: 5000,
         notify: false
-    });
-    done();
+    })
 }
 
-function browserReload(done){
-    browserSync.reload();
-    done();
+function html() {
+    return src(path.src.html)
+    .pipe(fileinclude())
+    .pipe(dest(path.build.html))
+    .pipe(browsersync.stream())
 }
 
-function print(done) {
-    console.log("hi");
-    done();
+function watchFiles(params) {
+    // слежка файлів при ізменению 
+    gulp.watch([path.watch.html], html);
+    gulp.watch([path.watch.css], css);
 }
 
-function watchSass(){
-    gulp.watch("./scss/**/*",css_style);
+function clean(params) {
+    // видалення непотрібних папок\файлів з остаточної папки
+    return del(path.clean);
 }
 
-function watchFiles(){
-    gulp.watch("./scss/**/*",css_style);
-    gulp.watch("./**/*.html",browserReload);
-    gulp.watch("./**/*.js",browserReload);
-    
+function css() {
+    return src(path.src.css)
+    .pipe(
+        scss({
+            outputStyle:'expanded'
+        })
+    )
+    .pipe(dest(path.build.css))
+    .pipe(browsersync.stream())
 }
 
-gulp.task('default',gulp.parallel(  watchFiles, sync));
-gulp.task(sync);
+let build = gulp.series(clean, gulp.parallel( css, html));
+let watch = gulp.parallel(build,watchFiles, browserSync);
 
-
-
+exports.css = css;
+exports.html = html;
+exports.build = build;
+exports.watch = watch;
+exports.default = watch;
