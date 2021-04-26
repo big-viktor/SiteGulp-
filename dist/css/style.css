@@ -1,28 +1,99 @@
-body {
-  font-size: 60px;
+header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-span {
+.header_menu {
+  text-decoration: none;
+  padding: 20px 50px 10px 10px;
+  font-family: Heebo;
   font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  text-align: right;
+  color: #000000;
 }
 
-div {
-  font-size: 30px;
+#menu__toggle {
+  display: none;
+  color: chocolate;
 }
 
-p {
-  color: red;
-}
-
-@media (max-width: 767px) {
-  span {
-    font-size: 15px;
+@media (max-width: 640px) {
+  .header_menu {
+    display: none;
   }
 
-  div {
-    font-size: 15px;
+  #menu__toggle {
+    text-decoration: none;
+    opacity: 0;
+  }
+
+  #menu__toggle:checked ~ .menu__btn > span {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+
+  #menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    -webkit-transform: rotate(0);
+        -ms-transform: rotate(0);
+            transform: rotate(0);
+  }
+
+  #menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+
+  #menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    left: 0;
+  }
+
+  .menu__btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: fixed;
+    top: 20px;
+    width: 26px;
+    height: 26px;
+    right: 30px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #616161;
+    -webkit-transition-duration: 0.25s;
+         -o-transition-duration: 0.25s;
+            transition-duration: 0.25s;
+  }
+
+  .menu__btn > span::before {
+    content: '';
+    top: -8px;
+  }
+
+  .menu__btn > span::after {
+    content: '';
+    top: 8px;
   }
 }
