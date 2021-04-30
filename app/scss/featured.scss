@@ -1,0 +1,120 @@
+.featured_conteiner{
+    max-width: 856px;
+    margin: 0 auto;
+    padding: 0px 15px;
+}
+@media(max-width: 1800px) {
+  .featured_conteiner{
+      max-width: 750px;
+  }
+}
+@media(max-width: 492px) {
+    .featured_conteiner{
+        max-width: 450px;
+    }
+}
+@media(max-width: 367px) {
+    .featured_conteiner{
+        max-width: none;
+    }
+}
+.info_content{
+    display: flex;
+    border-bottom: 1px solid #E0E0E0;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+@media(max-width:800px){
+    .info_content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+.text_N5{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 60px;
+    color: #21243D;
+}
+@media(max-width: 800px) {
+    .text_N5{
+    text-align: center;
+    font-size: 18px;
+    }
+}
+@media(max-width: 800px) {
+.foto_content{
+    display: flex;
+    justify-content: center;   
+}
+}
+.info_img{
+    max-width: 246px;
+    margin-right: 18px;
+    border-radius: 6px;
+}
+@media(max-width: 800px) {
+    .info_img{
+        
+    }
+}
+.photo_title{
+    margin: 0px 0 20px 0;
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    color: #21243D;
+}
+@media(max-width: 800px) {
+    .photo_title{
+        margin-top: 17px;
+        font-size: 24px;
+        line-height: 30px;
+    }
+    }
+.text_N6{
+    display: flex;
+    flex-direction: row;
+}
+.data_text{
+    background: #142850;
+    border-radius: 16px;
+    margin: 0px;
+    margin-right: 26px;
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    color: #FFFFFF;
+    padding: 3px 15px 3px 15px;
+}
+@media(max-width: 800px){
+    .data_text{
+        font-size: 16px;
+        padding: 5px 15px 1px 15px;
+        margin-right: 22px;
+        
+    }
+}
+.text_N7{
+    margin: 0px;
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 29px;
+    color: #8695A4;
+}
+.text_N8{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    color: #21243D;
+    margin-top: 22px;
+}

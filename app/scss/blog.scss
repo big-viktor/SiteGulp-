@@ -1,0 +1,109 @@
+.blog_container{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0px 15px;
+    padding-top: 55px;
+} 
+@media(max-width: 670px) {
+    .blog_container{
+        max-width: 600px;
+        padding-top: 18px;
+    }
+  }
+  @media(max-width: 492px) {
+      .blog_container{
+          max-width: 450px;
+          justify-content: center;
+      }
+  }
+  @media(max-width: 367px) {
+      .blog_container{
+          max-width: none;
+          justify-content: center;
+      }
+  }       
+
+.blog_title{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 44px;
+    line-height: 60px;
+    color: #21243D;
+    margin: 0px;
+    margin-bottom: 55px;
+}
+@media(max-width: 550px) {
+    .blog_title{
+       font-size: 30px;
+       margin-bottom: 18px;
+    }
+}       
+.blog_container__text{
+    border-bottom:  1px solid #E0E0E0;
+}
+.blog_text{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 44px;
+    color: #21243D;
+    margin: 0px;
+    margin-bottom: 16px;
+}
+@media(max-width: 550px) {
+    .blog_text{
+       font-size: 26px;
+       margin-bottom: 5px;
+    }
+}       
+.data_content{
+    display: flex;
+    margin-bottom: 15px;
+}
+@media(max-width: 550px) {
+    .data_content{
+        margin-bottom: 17px;
+    }
+}
+.blog_data{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 29px;
+    color: #21243D;
+    padding-right: 20px;
+    margin: 0px 20px 15px 0px;
+    border-right: 1px solid;
+}
+@media(max-width: 550px) {
+    .blog_data{
+       font-size: 16px;
+    }
+}       
+.blog_border{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 29px;
+    color: #8695A4;
+    margin: 0px;
+}
+.blog_textN2{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 23px;
+    color: #21243D;
+    margin: 0px;
+    padding-bottom: 29px;
+}
+@media(max-width: 550px) {
+    .blog_textN2{
+        padding-bottom: 24px;
+    }
+}     

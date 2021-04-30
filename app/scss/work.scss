@@ -1,0 +1,33 @@
+.work_conteiner{
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0px 15px;
+}
+@media(max-width: 670px) {
+    .work_container{
+        max-width: 600px;
+        padding-top: 18px;
+    }
+  }
+  @media(max-width: 492px) {
+      .work_container{
+          max-width: 450px;
+          justify-content: center;
+      }
+  }
+  @media(max-width: 367px) {
+      .work_container{
+          max-width: none;
+          justify-content: center;
+      }
+  }       
+
+.text_N1{
+    font-family: Heebo;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 44px;
+    line-height: 60px;
+    color: #21243D;
+    margin-bottom: 25px;
+}
